@@ -188,10 +188,5 @@ export Class YorComponent implements OnInit {
 ```
 
 ## License
-
-<<<<<<< HEAD
-MIT © [guzuomuse](mailto:czh51success@163.com)
-=======
 MIT © [guzuomuse]
 "# ngx-myform" 
->>>>>>> 46ad923ed655ff783acf16bcba7e097b8a4052b5
