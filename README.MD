@@ -48,17 +48,15 @@ export class AppModule { }
 2:in you component `YourComponent.ts`
 
 ```typescript
-
 import { FormGroup } from '@angular/forms';
 import { FormService, InputModel, GroupModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel } from 'ngx-myform';
 @Component({
-...
 })
 export Class YorComponent implements OnInit {
-```
-```typescript
-
   fg:FormGroup;
+  constructor(private fs:FormService){
+      
+  }
   models = [
     new InputModel({
         id: 'my_id',
@@ -173,9 +171,7 @@ export Class YorComponent implements OnInit {
         ],
       }),
     ];
-  constructor(private fs:FormService){
-    
-  }
+
   ngOnInit(){
     this.fg=this.fs.createFormGroup(this.models);
   }
