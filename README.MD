@@ -1,4 +1,8 @@
 # ngx-myform
+inspried by this [ng2-dynamic-forms](https://github.com/udos86/ng2-dynamic-forms)
+but i just want to use bootstrap v4
+and hope customing validator message more easier.
+...
 
 ## Installation
 
@@ -185,5 +189,5 @@ export Class YorComponent {
 
 ## License
 
-MIT © [guzuomuse](mailto:czh51success@163.com)
+MIT © [guzuomuse]
 "# ngx-myform" 
