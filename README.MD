@@ -1,10 +1,6 @@
 # ngx-myform
-<<<<<<< Updated upstream
-Easy to Use angular 2+  and bootstrap v4 for rapid form development
-=======
 Easy to Use bootstrap v4 and angular 2+ for rapid form development;
 ...
->>>>>>> Stashed changes
 
 ## Installation
 
@@ -19,7 +15,16 @@ $ npm install ngx-myform --save
 Once you have installed the library, you can import it in any Angular application:
 
 ## How to Use
-1: import the module:
+1: set bootstrap v4 global style
+   if your app based on angular-cli see [here](https://github.com/angular/angular-cli/wiki/stories-global-styles); how to configure global style
+   for example:
+   ```json
+  "styles": [
+      "../node_modules/bootstrap/dist/css/bootstrap.css",
+      "styles.css"
+  ],
+   ```
+2: import the module:
 
 ```typescript
 
@@ -46,7 +51,7 @@ import { NgxMyFormModule } from 'ngx-myform';
 })
 export class AppModule { }
 ```
-2:in you component `YourComponent.ts`
+3:in you component `YourComponent.ts`
 
 ```typescript
 import { FormGroup } from '@angular/forms';
@@ -189,12 +194,6 @@ export Class YorComponent implements OnInit {
 ```
 
 ## License
-<<<<<<< Updated upstream
-MIT © [guzuomuse]
-"# ngx-myform" 
-
-=======
 
 MIT © [guzuomuse]
 "# ngx-myform" 
->>>>>>> Stashed changes
