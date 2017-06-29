@@ -58,7 +58,7 @@ import { FormService, InputModel, GroupModel, TextareaModel, SelectModel, Checkb
 export Class YorComponent {
 ...
   fg:FormGroup;
-  const models = [
+  models = [
       new InputModel({
         id: 'my_id',
         value: 'defaut value',
