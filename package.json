@@ -1,0 +1,33 @@
+{
+  "name": "ngx-myform",
+  "version": "1.0.9",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/guzuomuse/ngx-myform"
+  },
+  "author": {
+    "name": "guzuomuse",
+    "email": "czh51success@163.com"
+  },
+  "keywords": [
+    "angular",
+    "angular 2",
+    "angular 4",
+    "angular form",
+    "form",
+    "formBuilder",
+    "reactiveForm",
+    "angular model driven form"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/guzuomuse/ngx-myform/issues"
+  },
+  "module": "ngx-myform.js",
+  "typings": "ngx-myform.d.ts",
+  "peerDependencies": {
+    "@angular/core": "^4.0.0",
+    "rxjs": "^5.1.0",
+    "zone.js": "^0.8.4"
+  }
+}
