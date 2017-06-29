@@ -1,7 +1,8 @@
 # ngx-myform
-inspried by this [ng2-dynamic-forms](https://github.com/udos86/ng2-dynamic-forms)
+inspried by this [ng2-dynamic-forms](https://github.com/udos86/ng2-dynamic-forms) 
+
 but i just want to use bootstrap v4
-and hope customing validator message more easier.
+and hope customing something such as validator message more easier.
 ...
 
 ## Installation
