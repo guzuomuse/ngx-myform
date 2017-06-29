@@ -1,12 +1,5 @@
 # ngx-myform
-<<<<<<< HEAD
 Easy to Use bootstrap v4 and angular 2+ for rapid form development;
-=======
-inspried by this [ng2-dynamic-forms](https://github.com/udos86/ng2-dynamic-forms) 
-
-but i just want to use bootstrap v4
-and hope customing something such as validator message more easier.
->>>>>>> 204c8e10a24d07e71e070558669f3d765554649c
 ...
 
 ## Installation
@@ -192,11 +185,6 @@ export Class YorComponent implements OnInit {
 ```
 
 ## License
-<<<<<<< HEAD
+MIT © [guzuomuse]
+"# ngx-myform" 
 
-MIT © [guzuomuse]
-"# ngx-myform" 
-=======
-MIT © [guzuomuse]
-"# ngx-myform" 
->>>>>>> 204c8e10a24d07e71e070558669f3d765554649c
