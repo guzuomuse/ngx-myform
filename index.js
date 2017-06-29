@@ -18,28 +18,17 @@ var NgxBootstrapControlComponent = (function () {
      */
     NgxBootstrapControlComponent.prototype.onValueChanges = function () {
         var _this = this;
-        var /** @type {?} */ control = (this.fg.get(this.model.options.id));
+        var /** @type {?} */ control = (this.group.get(this.model.options.id));
         if (control) {
             control.valueChanges.subscribe(function () {
                 _this.single_item_error_message = _this.multi_items_error_message = '';
                 if (control.controls) {
-                    // delete control['error_place'];
                     if (_this.checkAllInvalidDirty(control)) {
-                        // const error_place = this.model.options.errorPlace;
-                        // if (error_place && control.contains(error_place)) {
-                        //     control['error_place'] = error_place;
-                        // }
-                        // control['error_messages'] = this.setErrorMessage(control, 'multi_items_error_message');
                         _this.setErrorMessage(control, 'multi_items_error_message');
                     }
                 }
                 else if (control.dirty && control.invalid) {
                     _this.setErrorMessage(control, 'single_item_error_message');
-                    // const control_parent = control.parent as FormGroup;
-                    // if (control_parent && control_parent['error_place'] && control_parent.contains(control_parent['error_place']) && this.model.options.id === control_parent['error_place']) {
-                    //     const parent_errors = control.parent.errors;
-                    //     this.single_item_error_message += ' ' + control_parent['error_messages'] ? control_parent['error_messages'] : '';
-                    // }
                 }
             });
         }
@@ -97,21 +86,10 @@ var NgxBootstrapControlComponent = (function () {
     };
     return NgxBootstrapControlComponent;
 }());
-// setErrorMessageToControl(control: FormGroup, groupControl: FormGroup) {
-//     // get all existing errors
-//     const errors = control.errors;
-//     const group_errors = groupControl.errors;
-//     const errors_combined = Object.assign(errors || {}, group_errors || {});
-//     if (Object.keys(errors_combined).length < 1) {
-//         control.setErrors(null);
-//     } else {
-//         control.setErrors(errors_combined);
-//     }
-// }
 NgxBootstrapControlComponent.decorators = [
     { type: Component, args: [{
                 selector: 'ngx-bootstrap-control',
-                template: "<ng-container *ngIf=\"model\" [formGroup]='fg'> <div [modelAttributes]='model.options.formGroup?.attributes' [defaultClasses]=\"['form-group']\" [class.has-danger]=\"single_item_error_message\"> <label *ngIf=\"model.options.label\" for=\"{{model.options.id}}\" [modelAttributes]='model.options.label?.attributes' [innerHTML]='model.options.label?.value'></label> <div [modelAttributes]='model.options.wrapper?.attributes' [class.input-group]='model.options.prefix || model.options.suffix'> <ng-container [ngSwitch]=\"model.type\"> <ng-container *ngSwitchCase=\"'input'\"> <div *ngIf=\"model.options.prefix\" [innerHTML]=\"model.options.prefix?.value\" [modelAttributes]='model.options.prefix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> <input id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <div *ngIf=\"model.options.suffix\" [innerHTML]=\"model.options.suffix?.value\" [modelAttributes]='model.options.suffix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> </ng-container> <ng-container *ngSwitchCase=\"'textarea'\"> <textarea id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"></textarea> </ng-container> <ng-container *ngSwitchCase=\"'select'\"> <select id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <option *ngFor=\"let option of model.options.options\" [value]='option.value'> {{option.label}} </option> </select> </ng-container> <ng-container *ngSwitchCase=\"'checkbox'\"> <label class=\"form-check-label\"> <input type=\"checkbox\" class=\"form-check-input\" id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options?.events\" [modelAttributes]=\"model.options.attributes\" [checked]=\"model.options.checked\"> {{model.options.checkLabel}} </label> </ng-container> <ng-container *ngSwitchCase=\"'radiogroup'\"> <fieldset> <legend [modelAttributes]='model.options.legend?.attributes'> {{model.options.legend?.value}} </legend> <div *ngFor=\"let option of model.options.options\" class='form-check' [class.disabled]='option.disabled'> <label class=\"form-check-label\"> <input type=\"radio\" [formControlName]='model.options.id' class=\"form-check-input\" [value]=\"option.value\" [checked]=\"option.checked\" [attr.disabled]='option.disabled' [modelEvents]=\"option.events\" [modelAttributes]=\"option.attributes\"> {{option.label}}  </label> </div> </fieldset> </ng-container> <ng-container *ngSwitchCase=\"'group'\" [formGroupName]='model.options.id'> <ngx-bootstrap-control *ngFor=\"let group_model of model.options.group\" [model]='group_model' [fg]='fg.get(model.options.id)'> </ngx-bootstrap-control> <div *ngIf=\"multi_items_error_message\" class='has-danger'> <div class=\"form-control-feedback\">{{multi_items_error_message}}</div> </div> </ng-container> <!--<div *ngSwitchDefault>output2</div>--> </ng-container> </div> <div *ngIf=\"single_item_error_message\" class='form-control-feedback'>{{single_item_error_message}} </div> </div> </ng-container>",
+                template: "<ng-container *ngIf=\"model\" [formGroup]='group'> <div [modelAttributes]='model.options.formGroup?.attributes' [defaultClasses]=\"['form-group']\" [class.has-danger]=\"single_item_error_message\"> <label *ngIf=\"model.options.label\" for=\"{{model.options.id}}\" [modelAttributes]='model.options.label?.attributes' [innerHTML]='model.options.label?.value'></label> <div [modelAttributes]='model.options.wrapper?.attributes' [class.input-group]='model.options.prefix || model.options.suffix'> <ng-container [ngSwitch]=\"model.type\"> <ng-container *ngSwitchCase=\"'input'\"> <div *ngIf=\"model.options.prefix\" [innerHTML]=\"model.options.prefix?.value\" [modelAttributes]='model.options.prefix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> <input id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <div *ngIf=\"model.options.suffix\" [innerHTML]=\"model.options.suffix?.value\" [modelAttributes]='model.options.suffix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> </ng-container> <ng-container *ngSwitchCase=\"'textarea'\"> <textarea id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"></textarea> </ng-container> <ng-container *ngSwitchCase=\"'select'\"> <select id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <option *ngFor=\"let option of model.options.options\" [value]='option.value'> {{option.label}} </option> </select> </ng-container> <ng-container *ngSwitchCase=\"'checkbox'\"> <label class=\"form-check-label\"> <input type=\"checkbox\" class=\"form-check-input\" id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options?.events\" [modelAttributes]=\"model.options.attributes\" [checked]=\"model.options.checked\"> {{model.options.checkLabel}} </label> </ng-container> <ng-container *ngSwitchCase=\"'radiogroup'\"> <fieldset> <legend [modelAttributes]='model.options.legend?.attributes'> {{model.options.legend?.value}} </legend> <div *ngFor=\"let option of model.options.options\" class='form-check' [class.disabled]='option.disabled'> <label class=\"form-check-label\"> <input type=\"radio\" [formControlName]='model.options.id' class=\"form-check-input\" [value]=\"option.value\" [checked]=\"option.checked\" [attr.disabled]='option.disabled' [modelEvents]=\"option.events\" [modelAttributes]=\"option.attributes\"> {{option.label}}  </label> </div> </fieldset> </ng-container> <ng-container *ngSwitchCase=\"'group'\" [formGroupName]='model.options.id'> <ngx-bootstrap-control *ngFor=\"let group_model of model.options.group\" [model]='group_model' [group]='group.get(model.options.id)'> </ngx-bootstrap-control> <div *ngIf=\"multi_items_error_message\" class='has-danger'> <div class=\"form-control-feedback\">{{multi_items_error_message}}</div> </div> </ng-container> <!--<div *ngSwitchDefault>output2</div>--> </ng-container> </div> <div *ngIf=\"single_item_error_message\" class='form-control-feedback'>{{single_item_error_message}} </div> </div> </ng-container>",
             },] },
 ];
 /**
@@ -120,7 +98,7 @@ NgxBootstrapControlComponent.decorators = [
 NgxBootstrapControlComponent.ctorParameters = function () { return []; };
 NgxBootstrapControlComponent.propDecorators = {
     'model': [{ type: Input },],
-    'fg': [{ type: Input },],
+    'group': [{ type: Input },],
 };
 
 var FormService = (function () {
@@ -198,7 +176,7 @@ var ModelAttributesDirective = (function () {
      */
     ModelAttributesDirective.prototype.ngOnChanges = function (changes) {
         var _this = this;
-        if (changes['attributes']) {
+        if (changes['modelAttributes']) {
             for (var /** @type {?} */ key in this.modelAttributes) {
                 if (this.modelAttributes.hasOwnProperty(key)) {
                     var /** @type {?} */ value = this.modelAttributes[key];
@@ -251,7 +229,7 @@ var ModelEventsDirective = (function () {
      * @return {?}
      */
     ModelEventsDirective.prototype.ngOnChanges = function (changes) {
-        if (changes['events']) {
+        if (changes['modelEvents']) {
             for (var /** @type {?} */ key in this.modelEvents) {
                 if (this.modelEvents.hasOwnProperty(key)) {
                     this.renderer.listen(this.el.nativeElement, key, this.modelEvents[key]);

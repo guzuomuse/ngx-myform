@@ -70,4 +70,3 @@ $ npm run lint
 ## License
 
 MIT © [guzuomuse](mailto:czh51success@163.com)
-"# ngx-myform" 

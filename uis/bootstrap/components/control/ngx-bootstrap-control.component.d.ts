@@ -3,7 +3,7 @@ import { FormGroup } from '@angular/forms';
 import { BaseModel } from '../../models/base';
 export declare class NgxBootstrapControlComponent implements OnInit {
     model: BaseModel;
-    fg: FormGroup;
+    group: FormGroup;
     single_item_error_message: string;
     multi_items_error_message: string;
     ngOnInit(): void;
