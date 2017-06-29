@@ -1,15 +1,23 @@
 {
   "name": "ngx-myform",
+<<<<<<< HEAD
   "version": "1.0.9",
   "repository": {
     "type": "git",
     "url": "https://github.com/guzuomuse/ngx-myform"
+=======
+  "version": "1.0.5",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/username/repo"
+>>>>>>> 204c8e10a24d07e71e070558669f3d765554649c
   },
   "author": {
     "name": "guzuomuse",
     "email": "czh51success@163.com"
   },
   "keywords": [
+<<<<<<< HEAD
     "angular",
     "angular 2",
     "angular 4",
@@ -22,6 +30,13 @@
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/guzuomuse/ngx-myform/issues"
+=======
+    "angular"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/username/repo/issues"
+>>>>>>> 204c8e10a24d07e71e070558669f3d765554649c
   },
   "module": "ngx-myform.js",
   "typings": "ngx-myform.d.ts",
