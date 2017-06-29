@@ -10,7 +10,7 @@ $ npm install ngx-myform --save
 
 ## Consuming the library
 
-Once you have installed your library, you can import your library in any Angular application:
+Once you have installed the library, you can import it in any Angular application:
 
 ## How to Use
 1: import the module:
