@@ -1,6 +1,5 @@
 # ngx-myform
-Easy to Use angular 2+  and bootstrap v4 for rapid form development;
-...
+Easy to Use angular 2+  and bootstrap v4 for rapid form development
 
 ## Installation
 
