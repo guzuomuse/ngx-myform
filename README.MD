@@ -130,7 +130,7 @@ export Class YorComponent {
       new GroupModel({
         id: 'test3',
         // group level validator
-        validators: [{ key: 'pattern', validator: Validators.pattern(/test/), message: '正则错误--u893yy' }],
+        validators: [{ key: 'pattern', validator: Validators.pattern(/test/), message: 'group-level-error-message' }],
         group: [
           new CheckboxModel({
             id: 'test_3_3',
