@@ -21,6 +21,7 @@ Once you have installed the library, you can import it in any Angular applicatio
 1: import the module:
 
 ```typescript
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -47,12 +48,13 @@ export class AppModule { }
 2:in you component `YourComponent.ts`
 
 ```typescript
+
 import { FormGroup } from '@angular/forms';
 import { FormService, InputModel, GroupModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel } from 'ngx-myform';
-
-....
 @Component({
+...
 })
+...
 export Class YorComponent {
 ...
   fg:FormGroup;
@@ -174,7 +176,7 @@ export Class YorComponent {
     
   }
   ngOnInit(){
-    this.fg=this.fs.createFormGroup(config);
+    this.fg=this.fs.createFormGroup(models);
   }
 ...
 }
