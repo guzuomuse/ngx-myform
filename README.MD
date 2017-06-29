@@ -182,7 +182,7 @@ export Class YorComponent {
 3: in the template `YourComponent.html`;
 ```html
 <form [formGroup]='fg'>
-  <ngx-bootstrap-control *ngFor="let model of models" [model]='model' [fg]='fg'>
+  <ngx-bootstrap-control *ngFor="let model of models" [model]='model' [group]='fg'>
   </ngx-bootstrap-control>
   <button class="btn btn-primary">submit</button>
 </form>
