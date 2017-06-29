@@ -61,7 +61,7 @@ export Class YorComponent {
   models = [
       new InputModel({
         id: 'my_id',
-        value: 'defaut value',
+        value: 'default value',
         // disabled:true,
         validators: [
           {
