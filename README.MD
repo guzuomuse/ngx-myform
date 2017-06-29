@@ -176,7 +176,7 @@ export Class YorComponent {
     
   }
   ngOnInit(){
-    this.fg=this.fs.createFormGroup(models);
+    this.fg=this.fs.createFormGroup(this.models);
   }
 ...
 }
