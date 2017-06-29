@@ -8,15 +8,12 @@ To install this library, run:
 $ npm install ngx-myform --save
 ```
 
-## Consuming your library
+## Consuming the library
 
-Once you have published your library to npm, you can import your library in any Angular application by running:
+Once you have installed your library, you can import your library in any Angular application:
 
-```bash
-$ npm install ngx-myform
-```
-
-and then from your Angular `AppModule`:
+## How to Use
+1: import the module:
 
 ```typescript
 import { BrowserModule } from '@angular/platform-browser';
@@ -25,7 +22,7 @@ import { NgModule } from '@angular/core';
 import { AppComponent } from './app.component';
 
 // Import your library
-import { SampleModule } from 'ngx-myform';
+import { NgxMyFormModule } from 'ngx-myform';
 
 @NgModule({
   declarations: [
@@ -33,38 +30,157 @@ import { SampleModule } from 'ngx-myform';
   ],
   imports: [
     BrowserModule,
-
+    NgxMyFormModule.forRoot(),
     // Specify your library as an import
-    LibraryModule
+    OtherLibraryModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
 ```
+2:in you component `YourComponent.ts`
 
-Once your library is imported, you can use its components, directives and pipes in your Angular application:
+```typescript
+import { FormGroup } from '@angular/forms';
+import { FormService, InputModel, GroupModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel } from 'ngx-myform';
 
-```xml
-<!-- You can now use your library component in app.component.html -->
-<h1>
-  {{title}}
-</h1>
-<sampleComponent></sampleComponent>
+....
+@Component({
+})
+export Class YorComponent {
+...
+  fg:FormGroup;
+  const models = [
+      new InputModel({
+        id: 'my_id',
+        value: 'defaut value',
+        // disabled:true,
+        validators: [
+          {
+            // the key's value must be the ValidatorError's key;
+            key: 'required',
+            validator: Validators.required,
+            message: 'here is my custom required message',
+          },
+          { key: 'minlength', validator: Validators.minLength(3), message: 'at lease 3 charactors' }
+        ],
+        wrapper: {
+          // wapper a dive around the input,textarea,select...model with a div ,with this you can specify some attributes for exaple class:'col-md-6 my_custom_class',
+          attributes: {
+            class: 'input_wrapper_class_1 test_class_2'
+          }
+        },
+        label: {
+          value: '<div class="class_1">here is label value</div>',
+          // use attributes to set other attributes of the label,for exaple when using bootstrap grid can set 'class' attribute 'col-md-3' etc
+          attributes: {
+            class: 'label_class_1 label_class_2'
+          }
+        },
+        attributes: {
+          // custom the control's attributes. for example class and autofocus
+          class: 'class_1 class_2',
+          autofocus: 'autofocus',
+        },
+        // custom some events for this control,any event you want as long as this event is valid for the control
+        events: {
+          change: () => {
+            console.log('changed!');
+          },
+          keyup: () => {
+            console.log('keyup!');
+          },
+        },
+        prefix: {
+          // prefix some html before the control,for example using bootstrap's addon
+          // and also a suffix with same config just after the control
+          value: '<div class="ceshi_addon_1 ceshi_addon_2">let me try</div>',
+          attributes: {
+            class: 'test_prefix_1',
+          }
+        },
+      }),
+      new SelectModel({
+        id: 'select_1',
+        value: 'value2',
+        label: { value: 'select lable', },
+        options: [
+          { label: 'select_display_label', value: 'value1' },
+          { label: 'display_label_2', value: 'value2' }
+        ],
+      }),
+      new TextareaModel({
+        id: 'test_textarea',
+        validators: [
+          { key: 'required', validator: Validators.required, message: 'fill it for me!' }
+        ],
+      }),
+      new InputModel({
+        id: 'test2',
+      }),
+      // a group model container other model such as input select textare ... with the group property.
+      new GroupModel({
+        id: 'test3',
+        // group level validator
+        validators: [{ key: 'pattern', validator: Validators.pattern(/test/), message: '正则错误--u893yy' }],
+        group: [
+          new CheckboxModel({
+            id: 'test_3_3',
+            label: {
+              value: 'layout label for checkbox',
+            },
+            checkLabel: 'this is the checklable',
+            value: 'anyvalue',
+            checked: true,
+            // disabled:true,
+          }),
+          new InputModel({
+            id: 'test3_1',
+            validators: [
+              { key: 'required', validator: Validators.required, message: 'this is required!' },
+              { key: 'minlength', validator: Validators.minLength(5), message: '5 chars at least' }
+            ],
+          }),
+          new InputModel({
+            id: 'test3_2',
+            validators: [
+              { key: 'required', validator: Validators.required, message: '这个也得写！' }
+            ],
+          }),
+        ],
+      }),
+      new RadiogroupModel({
+        id: 'test_radio_group',
+        legend: {
+          value: 'here is legend',
+          attributes: {
+            class: 'class_legend_1 class_legend_2',
+          },
+        },
+        options: [
+          { label: 'here is label1', value: 'value_1', },
+          { label: 'label2', value: '2', checked: true },
+          { label: 'label3', value: 'value3', disabled: true }
+        ],
+      }),
+    ];
+  constructor(private fs:FormService){
+    
+  }
+  ngOnInit(){
+    this.fg=this.fs.createFormGroup(config);
+  }
+...
+}
 ```
-
-## Development
-
-To generate all `*.js`, `*.d.ts` and `*.metadata.json` files:
-
-```bash
-$ npm run build
-```
-
-To lint all `*.ts` files:
-
-```bash
-$ npm run lint
+3: in the template `YourComponent.html`;
+```html
+<form [formGroup]='fg'>
+  <ngx-bootstrap-control *ngFor="let model of models" [model]='model' [fg]='fg'>
+  </ngx-bootstrap-control>
+  <button class="btn btn-primary">submit</button>
+</form>
 ```
 
 ## License
