@@ -54,12 +54,13 @@ import { FormService, InputModel, GroupModel, TextareaModel, SelectModel, Checkb
 @Component({
 ...
 })
-...
-export Class YorComponent {
-...
+export Class YorComponent implements OnInit {
+```
+```typescript
+
   fg:FormGroup;
-  models = [
-      new InputModel({
+  models = [
+    new InputModel({
         id: 'my_id',
         value: 'default value',
         // disabled:true,
