@@ -1,13 +1,7 @@
-<<<<<<< HEAD
 import { Component, Directive, ElementRef, Injectable, Input, NgModule, Pipe, Renderer2 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DomSanitizer } from '@angular/platform-browser';
-=======
-import { Component, Directive, ElementRef, Injectable, Input, NgModule, Renderer2 } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormBuilder, FormControl, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
->>>>>>> 204c8e10a24d07e71e070558669f3d765554649c
 
 var NgxBootstrapControlComponent = (function () {
     function NgxBootstrapControlComponent() {
@@ -96,11 +90,7 @@ var NgxBootstrapControlComponent = (function () {
 NgxBootstrapControlComponent.decorators = [
     { type: Component, args: [{
                 selector: 'ngx-bootstrap-control',
-<<<<<<< HEAD
                 template: "<ng-container *ngIf=\"model\" [formGroup]='group'> <div [modelAttributes]='model.options.formGroup?.attributes' [defaultClasses]=\"['form-group']\" [class.has-danger]=\"single_item_error_message\"> <label *ngIf=\"model.options.label\" for=\"{{model.options.id}}\" [modelAttributes]='model.options.label?.attributes' [innerHTML]='model.options.label?.value | sanitizeHtml'></label> <div [modelAttributes]='model.options.wrapper?.attributes' [class.input-group]='model.options.prefix || model.options.suffix'> <ng-container [ngSwitch]=\"model.type\"> <ng-container *ngSwitchCase=\"'input'\"> <div *ngIf=\"model.options.prefix\" [innerHTML]=\"model.options.prefix?.value | sanitizeHtml\" [modelAttributes]='model.options.prefix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> <input id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <div *ngIf=\"model.options.suffix\" [innerHTML]=\"model.options.suffix?.value | sanitizeHtml\" [modelAttributes]='model.options.suffix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> </ng-container> <ng-container *ngSwitchCase=\"'textarea'\"> <textarea id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"></textarea> </ng-container> <ng-container *ngSwitchCase=\"'select'\"> <select id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <option *ngFor=\"let option of model.options.options\" [value]='option.value'> {{option.label}} </option> </select> </ng-container> <ng-container *ngSwitchCase=\"'checkbox'\"> <label class=\"form-check-label\"> <input type=\"checkbox\" class=\"form-check-input\" id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options?.events\" [modelAttributes]=\"model.options.attributes\" [checked]=\"model.options.checked\"> {{model.options.checkLabel}} </label> </ng-container> <ng-container *ngSwitchCase=\"'radiogroup'\"> <fieldset> <legend [modelAttributes]='model.options.legend?.attributes'> {{model.options.legend?.value}} </legend> <div *ngFor=\"let option of model.options.options\" class='form-check' [class.disabled]='option.disabled'> <label class=\"form-check-label\"> <input type=\"radio\" [formControlName]='model.options.id' class=\"form-check-input\" [value]=\"option.value\" [checked]=\"option.checked\" [attr.disabled]='option.disabled' [modelEvents]=\"option.events\" [modelAttributes]=\"option.attributes\"> {{option.label}}  </label> </div> </fieldset> </ng-container> <ng-container *ngSwitchCase=\"'group'\" [formGroupName]='model.options.id'> <ngx-bootstrap-control *ngFor=\"let group_model of model.options.group\" [model]='group_model' [group]='group.get(model.options.id)'> </ngx-bootstrap-control> <div *ngIf=\"multi_items_error_message\" class='has-danger'> <div class=\"form-control-feedback\">{{multi_items_error_message}}</div> </div> </ng-container> <!--<div *ngSwitchDefault>output2</div>--> </ng-container> </div> <div *ngIf=\"single_item_error_message\" class='form-control-feedback'>{{single_item_error_message}} </div> </div> </ng-container>",
-=======
-                template: "<ng-container *ngIf=\"model\" [formGroup]='group'> <div [modelAttributes]='model.options.formGroup?.attributes' [defaultClasses]=\"['form-group']\" [class.has-danger]=\"single_item_error_message\"> <label *ngIf=\"model.options.label\" for=\"{{model.options.id}}\" [modelAttributes]='model.options.label?.attributes' [innerHTML]='model.options.label?.value'></label> <div [modelAttributes]='model.options.wrapper?.attributes' [class.input-group]='model.options.prefix || model.options.suffix'> <ng-container [ngSwitch]=\"model.type\"> <ng-container *ngSwitchCase=\"'input'\"> <div *ngIf=\"model.options.prefix\" [innerHTML]=\"model.options.prefix?.value\" [modelAttributes]='model.options.prefix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> <input id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <div *ngIf=\"model.options.suffix\" [innerHTML]=\"model.options.suffix?.value\" [modelAttributes]='model.options.suffix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> </ng-container> <ng-container *ngSwitchCase=\"'textarea'\"> <textarea id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"></textarea> </ng-container> <ng-container *ngSwitchCase=\"'select'\"> <select id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <option *ngFor=\"let option of model.options.options\" [value]='option.value'> {{option.label}} </option> </select> </ng-container> <ng-container *ngSwitchCase=\"'checkbox'\"> <label class=\"form-check-label\"> <input type=\"checkbox\" class=\"form-check-input\" id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options?.events\" [modelAttributes]=\"model.options.attributes\" [checked]=\"model.options.checked\"> {{model.options.checkLabel}} </label> </ng-container> <ng-container *ngSwitchCase=\"'radiogroup'\"> <fieldset> <legend [modelAttributes]='model.options.legend?.attributes'> {{model.options.legend?.value}} </legend> <div *ngFor=\"let option of model.options.options\" class='form-check' [class.disabled]='option.disabled'> <label class=\"form-check-label\"> <input type=\"radio\" [formControlName]='model.options.id' class=\"form-check-input\" [value]=\"option.value\" [checked]=\"option.checked\" [attr.disabled]='option.disabled' [modelEvents]=\"option.events\" [modelAttributes]=\"option.attributes\"> {{option.label}}  </label> </div> </fieldset> </ng-container> <ng-container *ngSwitchCase=\"'group'\" [formGroupName]='model.options.id'> <ngx-bootstrap-control *ngFor=\"let group_model of model.options.group\" [model]='group_model' [group]='group.get(model.options.id)'> </ngx-bootstrap-control> <div *ngIf=\"multi_items_error_message\" class='has-danger'> <div class=\"form-control-feedback\">{{multi_items_error_message}}</div> </div> </ng-container> <!--<div *ngSwitchDefault>output2</div>--> </ng-container> </div> <div *ngIf=\"single_item_error_message\" class='form-control-feedback'>{{single_item_error_message}} </div> </div> </ng-container>",
->>>>>>> 204c8e10a24d07e71e070558669f3d765554649c
             },] },
 ];
 /**
@@ -264,7 +254,6 @@ ModelEventsDirective.propDecorators = {
     'modelEvents': [{ type: Input },],
 };
 
-<<<<<<< HEAD
 var SanitizeHtmlPipe = (function () {
     /**
      * @param {?} _sanitizer
@@ -293,8 +282,6 @@ SanitizeHtmlPipe.ctorParameters = function () { return [
     { type: DomSanitizer, },
 ]; };
 
-=======
->>>>>>> 204c8e10a24d07e71e070558669f3d765554649c
 var BaseModel = (function () {
     /**
      * @param {?} options
@@ -470,19 +457,13 @@ NgxMyFormModule.decorators = [
                     NgxBootstrapControlComponent,
                     ModelAttributesDirective,
                     ModelEventsDirective,
-<<<<<<< HEAD
                     SanitizeHtmlPipe,
-=======
->>>>>>> 204c8e10a24d07e71e070558669f3d765554649c
                 ],
                 exports: [
                     NgxBootstrapControlComponent,
                     ModelAttributesDirective,
                     ModelEventsDirective,
-<<<<<<< HEAD
                     SanitizeHtmlPipe,
-=======
->>>>>>> 204c8e10a24d07e71e070558669f3d765554649c
                 ]
             },] },
 ];
@@ -491,8 +472,4 @@ NgxMyFormModule.decorators = [
  */
 NgxMyFormModule.ctorParameters = function () { return []; };
 
-<<<<<<< HEAD
 export { NgxMyFormModule, FormService, InputModel, GroupModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel, ModelAttributesDirective, ModelEventsDirective, SanitizeHtmlPipe, NgxBootstrapControlComponent };
-=======
-export { NgxMyFormModule, FormService, InputModel, GroupModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel, ModelAttributesDirective, ModelEventsDirective, NgxBootstrapControlComponent };
->>>>>>> 204c8e10a24d07e71e070558669f3d765554649c

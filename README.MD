@@ -1,5 +1,10 @@
 # ngx-myform
+<<<<<<< Updated upstream
 Easy to Use angular 2+  and bootstrap v4 for rapid form development
+=======
+Easy to Use bootstrap v4 and angular 2+ for rapid form development;
+...
+>>>>>>> Stashed changes
 
 ## Installation
 
@@ -184,6 +189,12 @@ export Class YorComponent implements OnInit {
 ```
 
 ## License
+<<<<<<< Updated upstream
 MIT © [guzuomuse]
 "# ngx-myform" 
 
+=======
+
+MIT © [guzuomuse]
+"# ngx-myform" 
+>>>>>>> Stashed changes
