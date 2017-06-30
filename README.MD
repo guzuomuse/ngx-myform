@@ -1,5 +1,5 @@
 # ngx-myform
-Easy to Use bootstrap v4 and angular 2+ for rapid form development;
+Easy to Use bootstrap v4 and angular 4+ for rapid form development;
 ...
 
 ## Installation
@@ -55,13 +55,11 @@ export class AppModule { }
 
 ```typescript
 import { FormGroup } from '@angular/forms';
-import { FormService, InputModel, GroupModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel } from 'ngx-myform';
+import { InputModel, GroupModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel } from 'ngx-myform';
 @Component({
 })
 export Class YorComponent implements OnInit {
-  fg:FormGroup;
-  constructor(private fs:FormService){
-      
+  constructor(){      
   }
   models = [
     new InputModel({
@@ -179,18 +177,18 @@ export Class YorComponent implements OnInit {
     ];
 
   ngOnInit(){
-    this.fg=this.fs.createFormGroup(this.models);
+  }
+  YourSubmitFunction(form){
+    cosnole.log(form.value);
   }
 ...
 }
 ```
 3: in the template `YourComponent.html`;
 ```html
-<form [formGroup]='fg'>
-  <ngx-bootstrap-control *ngFor="let model of models" [model]='model' [group]='fg'>
-  </ngx-bootstrap-control>
-  <button class="btn btn-primary">submit</button>
-</form>
+  <ngx-bootstrap-form [models]="models" (ngSubmit)="YourSubmitFunction($event);">
+    <button class="btn btn-primary">submit</button>
+  </ngx-bootstrap-form>
 ```
 
 ## License

@@ -4,105 +4,6 @@
 	(factory((global['ngx-myform'] = global['ngx-myform'] || {}),global._angular_core,global._angular_common,global._angular_forms,global._angular_platformBrowser));
 }(this, (function (exports,_angular_core,_angular_common,_angular_forms,_angular_platformBrowser) { 'use strict';
 
-var NgxBootstrapControlComponent = (function () {
-    function NgxBootstrapControlComponent() {
-        this.single_item_error_message = '';
-        this.multi_items_error_message = '';
-    }
-    /**
-     * @return {?}
-     */
-    NgxBootstrapControlComponent.prototype.ngOnInit = function () {
-        this.onValueChanges();
-    };
-    /**
-     * @return {?}
-     */
-    NgxBootstrapControlComponent.prototype.onValueChanges = function () {
-        var _this = this;
-        var /** @type {?} */ control = (this.group.get(this.model.options.id));
-        if (control) {
-            control.valueChanges.subscribe(function () {
-                _this.single_item_error_message = _this.multi_items_error_message = '';
-                if (control.controls) {
-                    if (_this.checkAllInvalidDirty(control)) {
-                        _this.setErrorMessage(control, 'multi_items_error_message');
-                    }
-                }
-                else if (control.dirty && control.invalid) {
-                    _this.setErrorMessage(control, 'single_item_error_message');
-                }
-            });
-        }
-    };
-    /**
-     * @param {?} fg
-     * @return {?}
-     */
-    NgxBootstrapControlComponent.prototype.checkAllInvalidDirty = function (fg) {
-        return Object.keys(fg.controls).every(function (key) {
-            return fg.controls[key].valid ? true : (fg.controls[key].dirty && fg.controls[key].invalid);
-        });
-    };
-    /**
-     * @param {?} control
-     * @param {?} error_type
-     * @return {?}
-     */
-    NgxBootstrapControlComponent.prototype.setErrorMessage = function (control, error_type) {
-        try {
-            // combine async and sync validators's messages
-            var /** @type {?} */ sync_validators = (this.model.options.validators);
-            var /** @type {?} */ sync_m = void 0, /** @type {?} */ async_m = void 0;
-            if (!sync_validators) {
-                sync_m = {};
-            }
-            else {
-                sync_m = sync_validators.reduce(function (a, b) {
-                    return Object.assign(a, (_a = {}, _a[b.key] = b.message ? b.message : 'please set some messages', _a));
-                    var _a;
-                }, {});
-            }
-            var /** @type {?} */ async_validators = (this.model.options.asyncValidators);
-            if (!async_validators) {
-                async_m = {};
-            }
-            else {
-                async_m = async_validators.reduce(function (a, b) {
-                    return Object.assign(a, (_a = {}, _a[b.key] = b.message ? b.message : 'please set some messages', _a));
-                    var _a;
-                }, {});
-            }
-            var /** @type {?} */ m = Object.assign(sync_m, async_m);
-            var /** @type {?} */ errors = control.errors;
-            for (var /** @type {?} */ key in errors) {
-                if (errors.hasOwnProperty(key)) {
-                    this[error_type] += m[key] + ' ';
-                }
-            }
-            return this[error_type] ? this[error_type] : '';
-        }
-        catch (e) {
-            // throw e;
-        }
-    };
-    return NgxBootstrapControlComponent;
-}());
-NgxBootstrapControlComponent.decorators = [
-    { type: _angular_core.Component, args: [{
-                selector: 'ngx-bootstrap-control',
-                template: "<ng-container *ngIf=\"model\" [formGroup]='group'> <div [modelAttributes]='model.options.formGroup?.attributes' [defaultClasses]=\"['form-group']\" [class.has-danger]=\"single_item_error_message\"> <label *ngIf=\"model.options.label\" for=\"{{model.options.id}}\" [modelAttributes]='model.options.label?.attributes' [innerHTML]='model.options.label?.value | sanitizeHtml'></label> <div [modelAttributes]='model.options.wrapper?.attributes' [class.input-group]='model.options.prefix || model.options.suffix'> <ng-container [ngSwitch]=\"model.type\"> <ng-container *ngSwitchCase=\"'input'\"> <div *ngIf=\"model.options.prefix\" [innerHTML]=\"model.options.prefix?.value | sanitizeHtml\" [modelAttributes]='model.options.prefix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> <input id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <div *ngIf=\"model.options.suffix\" [innerHTML]=\"model.options.suffix?.value | sanitizeHtml\" [modelAttributes]='model.options.suffix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> </ng-container> <ng-container *ngSwitchCase=\"'textarea'\"> <textarea id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"></textarea> </ng-container> <ng-container *ngSwitchCase=\"'select'\"> <select id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <option *ngFor=\"let option of model.options.options\" [value]='option.value'> {{option.label}} </option> </select> </ng-container> <ng-container *ngSwitchCase=\"'checkbox'\"> <label class=\"form-check-label\"> <input type=\"checkbox\" class=\"form-check-input\" id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options?.events\" [modelAttributes]=\"model.options.attributes\" [checked]=\"model.options.checked\"> {{model.options.checkLabel}} </label> </ng-container> <ng-container *ngSwitchCase=\"'radiogroup'\"> <fieldset> <legend [modelAttributes]='model.options.legend?.attributes'> {{model.options.legend?.value}} </legend> <div *ngFor=\"let option of model.options.options\" class='form-check' [class.disabled]='option.disabled'> <label class=\"form-check-label\"> <input type=\"radio\" [formControlName]='model.options.id' class=\"form-check-input\" [value]=\"option.value\" [checked]=\"option.checked\" [attr.disabled]='option.disabled' [modelEvents]=\"option.events\" [modelAttributes]=\"option.attributes\"> {{option.label}}  </label> </div> </fieldset> </ng-container> <ng-container *ngSwitchCase=\"'group'\" [formGroupName]='model.options.id'> <ngx-bootstrap-control *ngFor=\"let group_model of model.options.group\" [model]='group_model' [group]='group.get(model.options.id)'> </ngx-bootstrap-control> <div *ngIf=\"multi_items_error_message\" class='has-danger'> <div class=\"form-control-feedback\">{{multi_items_error_message}}</div> </div> </ng-container> <!--<div *ngSwitchDefault>output2</div>--> </ng-container> </div> <div *ngIf=\"single_item_error_message\" class='form-control-feedback'>{{single_item_error_message}} </div> </div> </ng-container>",
-            },] },
-];
-/**
- * @nocollapse
- */
-NgxBootstrapControlComponent.ctorParameters = function () { return []; };
-NgxBootstrapControlComponent.propDecorators = {
-    'model': [{ type: _angular_core.Input },],
-    'group': [{ type: _angular_core.Input },],
-};
-
 var FormService = (function () {
     /**
      * @param {?} fb
@@ -283,6 +184,152 @@ SanitizeHtmlPipe.ctorParameters = function () { return [
     { type: _angular_platformBrowser.DomSanitizer, },
 ]; };
 
+var NgxBootstrapControlComponent = (function () {
+    function NgxBootstrapControlComponent() {
+        this.single_item_error_message = '';
+        this.multi_items_error_message = '';
+    }
+    /**
+     * @return {?}
+     */
+    NgxBootstrapControlComponent.prototype.ngOnInit = function () {
+        this.onValueChanges();
+    };
+    /**
+     * @return {?}
+     */
+    NgxBootstrapControlComponent.prototype.onValueChanges = function () {
+        var _this = this;
+        var /** @type {?} */ control = (this.fg.get(this.model.options.id));
+        if (control) {
+            control.valueChanges.subscribe(function () {
+                _this.single_item_error_message = _this.multi_items_error_message = '';
+                if (control.controls) {
+                    if (_this.checkAllInvalidDirty(control)) {
+                        _this.setErrorMessage(control, 'multi_items_error_message');
+                    }
+                }
+                else if (control.dirty && control.invalid) {
+                    _this.setErrorMessage(control, 'single_item_error_message');
+                }
+            });
+        }
+    };
+    /**
+     * @param {?} fg
+     * @return {?}
+     */
+    NgxBootstrapControlComponent.prototype.checkAllInvalidDirty = function (fg) {
+        return Object.keys(fg.controls).every(function (key) {
+            return fg.controls[key].valid ? true : (fg.controls[key].dirty && fg.controls[key].invalid);
+        });
+    };
+    /**
+     * @param {?} control
+     * @param {?} error_type
+     * @return {?}
+     */
+    NgxBootstrapControlComponent.prototype.setErrorMessage = function (control, error_type) {
+        try {
+            // combine async and sync validators's messages
+            var /** @type {?} */ sync_validators = (this.model.options.validators);
+            var /** @type {?} */ sync_m = void 0, /** @type {?} */ async_m = void 0;
+            if (!sync_validators) {
+                sync_m = {};
+            }
+            else {
+                sync_m = sync_validators.reduce(function (a, b) {
+                    return Object.assign(a, (_a = {}, _a[b.key] = b.message ? b.message : 'please set some messages', _a));
+                    var _a;
+                }, {});
+            }
+            var /** @type {?} */ async_validators = (this.model.options.asyncValidators);
+            if (!async_validators) {
+                async_m = {};
+            }
+            else {
+                async_m = async_validators.reduce(function (a, b) {
+                    return Object.assign(a, (_a = {}, _a[b.key] = b.message ? b.message : 'please set some messages', _a));
+                    var _a;
+                }, {});
+            }
+            var /** @type {?} */ m = Object.assign(sync_m, async_m);
+            var /** @type {?} */ errors = control.errors;
+            for (var /** @type {?} */ key in errors) {
+                if (errors.hasOwnProperty(key)) {
+                    if (!m[key]) {
+                        // tslint:disable-next-line:max-line-length
+                        console.error('validator config error! the key must be same as the applied Validator\'s key!\n the key is : \'' + key + '\' ; please check it!');
+                    }
+                    this[error_type] += m[key] ? m[key] : '' + ' ';
+                }
+            }
+            return this[error_type] ? this[error_type] : '';
+        }
+        catch (e) {
+            // throw e;
+        }
+    };
+    return NgxBootstrapControlComponent;
+}());
+NgxBootstrapControlComponent.decorators = [
+    { type: _angular_core.Component, args: [{
+                selector: 'ngx-bootstrap-control',
+                template: "<ng-container *ngIf=\"model\" [formGroup]='fg'> <div [modelAttributes]='model.options.formGroup?.attributes' [defaultClasses]=\"['form-group']\" [class.has-danger]=\"single_item_error_message\"> <label *ngIf=\"model.options.label\" for=\"{{model.options.id}}\" [modelAttributes]='model.options.label?.attributes' [innerHTML]='model.options.label?.value | sanitizeHtml'></label> <div [modelAttributes]='model.options.wrapper?.attributes' [class.input-group]='model.options.prefix || model.options.suffix'> <ng-container [ngSwitch]=\"model.type\"> <ng-container *ngSwitchCase=\"'input'\"> <div *ngIf=\"model.options.prefix\" [innerHTML]=\"model.options.prefix?.value | sanitizeHtml\" [modelAttributes]='model.options.prefix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> <input id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <div *ngIf=\"model.options.suffix\" [innerHTML]=\"model.options.suffix?.value | sanitizeHtml\" [modelAttributes]='model.options.suffix?.attributes' [defaultClasses]=\"['input-group-addon']\"></div> </ng-container> <ng-container *ngSwitchCase=\"'textarea'\"> <textarea id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"></textarea> </ng-container> <ng-container *ngSwitchCase=\"'select'\"> <select id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options.events\" [modelAttributes]=\"model.options.attributes\" [defaultClasses]=\"['form-control']\"> <option *ngFor=\"let option of model.options.options\" [value]='option.value'> {{option.label}} </option> </select> </ng-container> <ng-container *ngSwitchCase=\"'checkbox'\"> <label class=\"form-check-label\"> <input type=\"checkbox\" class=\"form-check-input\" id=\"{{model.options.id}}\" [formControlName]='model.options.id' [modelEvents]=\"model.options?.events\" [modelAttributes]=\"model.options.attributes\" [checked]=\"model.options.checked\"> {{model.options.checkLabel}} </label> </ng-container> <ng-container *ngSwitchCase=\"'radiogroup'\"> <fieldset> <legend [modelAttributes]='model.options.legend?.attributes'> {{model.options.legend?.value}} </legend> <div *ngFor=\"let option of model.options.options\" class='form-check' [class.disabled]='option.disabled'> <label class=\"form-check-label\"> <input type=\"radio\" [formControlName]='model.options.id' class=\"form-check-input\" [value]=\"option.value\" [checked]=\"option.checked\" [attr.disabled]='option.disabled' [modelEvents]=\"option.events\" [modelAttributes]=\"option.attributes\"> {{option.label}}  </label> </div> </fieldset> </ng-container> <ng-container *ngSwitchCase=\"'group'\" [formGroupName]='model.options.id'> <ngx-bootstrap-control *ngFor=\"let group_model of model.options.group\" [model]='group_model' [fg]='fg.get(model.options.id)'> </ngx-bootstrap-control> <div *ngIf=\"multi_items_error_message\" class='has-danger'> <div class=\"form-control-feedback\">{{multi_items_error_message}}</div> </div> </ng-container> <!--<div *ngSwitchDefault>output2</div>--> </ng-container> </div> <div *ngIf=\"single_item_error_message\" class='form-control-feedback'>{{single_item_error_message}} </div> </div> </ng-container>",
+            },] },
+];
+/**
+ * @nocollapse
+ */
+NgxBootstrapControlComponent.ctorParameters = function () { return []; };
+NgxBootstrapControlComponent.propDecorators = {
+    'model': [{ type: _angular_core.Input },],
+    'fg': [{ type: _angular_core.Input },],
+};
+
+var NgxBootstrapFormComponent = (function () {
+    /**
+     * @param {?} fs
+     * @param {?} fb
+     */
+    function NgxBootstrapFormComponent(fs, fb) {
+        this.fs = fs;
+        this.fb = fb;
+        this.ngSubmit = new _angular_core.EventEmitter();
+    }
+    /**
+     * @return {?}
+     */
+    NgxBootstrapFormComponent.prototype.ngOnInit = function () {
+        this.fg = this.fs.createFormGroup(this.models);
+    };
+    /**
+     * @param {?} f
+     * @return {?}
+     */
+    NgxBootstrapFormComponent.prototype.submit = function (f) {
+        this.ngSubmit.emit(f);
+    };
+    return NgxBootstrapFormComponent;
+}());
+NgxBootstrapFormComponent.decorators = [
+    { type: _angular_core.Component, args: [{
+                selector: 'ngx-bootstrap-form',
+                template: "<form [formGroup]='fg' (ngSubmit)=\"submit(fg);\"> <ngx-bootstrap-control *ngFor=\"let model of models\" [model]=\"model\" [fg]=\"fg\"></ngx-bootstrap-control> <ng-content></ng-content> </form>"
+            },] },
+];
+/**
+ * @nocollapse
+ */
+NgxBootstrapFormComponent.ctorParameters = function () { return [
+    { type: FormService, },
+    { type: _angular_forms.FormBuilder, },
+]; };
+NgxBootstrapFormComponent.propDecorators = {
+    'models': [{ type: _angular_core.Input },],
+    'ngSubmit': [{ type: _angular_core.Output },],
+};
+
 var BaseModel = (function () {
     /**
      * @param {?} options
@@ -431,6 +478,7 @@ var RadiogroupModel = (function (_super) {
     return RadiogroupModel;
 }(BaseModel));
 
+// export { NgxBootstrapControlComponent } from './uis/bootstrap/components/control/ngx-bootstrap-control.component';
 var NgxMyFormModule = (function () {
     function NgxMyFormModule() {
     }
@@ -456,12 +504,14 @@ NgxMyFormModule.decorators = [
                 ],
                 declarations: [
                     NgxBootstrapControlComponent,
+                    NgxBootstrapFormComponent,
                     ModelAttributesDirective,
                     ModelEventsDirective,
                     SanitizeHtmlPipe,
                 ],
                 exports: [
                     NgxBootstrapControlComponent,
+                    NgxBootstrapFormComponent,
                     ModelAttributesDirective,
                     ModelEventsDirective,
                     SanitizeHtmlPipe,
@@ -485,6 +535,7 @@ exports.ModelAttributesDirective = ModelAttributesDirective;
 exports.ModelEventsDirective = ModelEventsDirective;
 exports.SanitizeHtmlPipe = SanitizeHtmlPipe;
 exports.NgxBootstrapControlComponent = NgxBootstrapControlComponent;
+exports.NgxBootstrapFormComponent = NgxBootstrapFormComponent;
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
