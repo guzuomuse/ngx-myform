@@ -350,6 +350,56 @@ export Class YorComponent implements OnInit {
   <button class="btn btn-primary" type="submit">submit</button>
 </ngx-bootstrap-form>
 ```
+##FormConfig
+say it's easy to use,because,you just need to configure a json format data; and bind this data to the `ngx-bootstrap-form` form component;
+```typescript
+interface FormConfig {
+    models: BaseModel[],
+    attributes?: { [key: string]: string },
+    wrappersClass?: WrappersClassInterFace,
+    showErrorsOnSubmit?: boolean;
+}
+```
+# models:
+models is an array in which the basic form elements are include for exaple: `InputModel` represents input element
+`SelectModel` represents select element.
+# attributes:
+you can use dynamically set any attibute for your form
+attributes:{
+   'autocomplete':'off',
+}
+the form will add  `"autocomplete"="off"` to you form
+# WrappersClass:
+before talking about The "wrappersClass";let's see the  DOM structuor for a model,pseudo code:
+```html
+<div mainWrapper>
+  <label labelWrapper></label>
+  <div secondaryWrapper>
+    <div controlWrapper>
+      <div prefix></div>
+      input|select|radio|checkbox|radiogroup|checkgroup...
+      <div suffix></div>
+    </div>
+    <div form-conrol-feedback>some error message</div>
+  </div>
+</div>
+```
+if you are familar with bootstrap v4 understand;it's based on the bootstrap form structor;
+so,the purpose of `WrappersClass` is just **Globally** configure  for form layout while every model also  has this individually;
+
+you can custom any class with:
+```json
+{
+   models:...
+   attributes:...
+   wrappersClass:{
+      mainWrapper:['custom_class_1','custom_class_2',...],
+      labelWrapper:[...],
+      ....
+   },
+   ...
+}
+```
 
 ## License
 
