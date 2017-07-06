@@ -402,7 +402,7 @@ you can custom any class with:
 ```
 ## ModelTypes
 
-InputModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel, CheckboxGroupModel,GroupModel
+`InputModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel, CheckboxGroupModel,GroupModel`
 
 GroupModel is a special model which used for creating FormGroup; for example:
 ```typescript
