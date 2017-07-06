@@ -11,6 +11,8 @@ Easy to Sse,Flexible,Simple,Powerful Angular 4+ module with Bootstrap v4 ui for 
 
 [ModelTypes](#modeltypes)
 
+[ModelConfig](#modelconfig)
+
 [livedemo](#livedeo)
 
 
@@ -421,7 +423,26 @@ models=[
    ...
 ];
 ```
-
+## ModelConfig
+   ```typescript
+   {
+    id: string;
+    value?: string | boolean;
+    disabled?: boolean;
+    attributes?: { [key: string]: string };
+    events?: { [key: string]: (any) => void };
+    validators?: {
+        key: string,
+        validator: ValidatorFn | ValidationErrors,
+        message?: string,
+    }[];
+    asyncValidators?: {
+        key: string,
+        validator: AsyncValidatorFn | ValidationErrors,
+        message?: string,
+    }[];
+   }
+   ```
 ## License
 
 MIT © [guzuomuse]
