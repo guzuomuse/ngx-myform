@@ -335,8 +335,11 @@ export Class YorComponent implements OnInit {
 
   ngOnInit(){
   }
-  YourSubmitFunction(form){
-    cosnole.log(form.value);
+  test_submit(form) {
+    console.log('test_submit', form.value);
+  }
+  test_change(data) {
+    console.log('test_change', data);
   }
 ...
 }
