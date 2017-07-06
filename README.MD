@@ -9,7 +9,7 @@ Easy to Sse,Flexible,Simple,Powerful Angular 4+ module with Bootstrap v4 ui for 
 
 [FormConfig](#formconfig)
 
-[ControlTypes](#controltypes)
+[ModelTypes](#modeltypes)
 
 [livedemo](#livedeo)
 
@@ -350,7 +350,7 @@ export Class YorComponent implements OnInit {
   <button class="btn btn-primary" type="submit">submit</button>
 </ngx-bootstrap-form>
 ```
-##FormConfig
+## FormConfig
 say it's easy to use,because,you just need to configure a json format data; and bind this data to the `ngx-bootstrap-form` form component;
 ```typescript
 interface FormConfig {
@@ -369,7 +369,7 @@ attributes:{
    'autocomplete':'off',
 }
 the form will add  `"autocomplete"="off"` to you form
-# WrappersClass:
+# wrappersClass:
 before talking about The "wrappersClass";let's see the  DOM structuor for a model,pseudo code:
 ```html
 <div mainWrapper>
@@ -388,7 +388,7 @@ if you are familar with bootstrap v4 understand;it's based on the bootstrap form
 so,the purpose of `WrappersClass` is just **Globally** configure  for form layout while every model also  has this individually;
 
 you can custom any class with:
-```json
+```html
 {
    models:...
    attributes:...
@@ -399,6 +399,27 @@ you can custom any class with:
    },
    ...
 }
+```
+## ModelTypes
+
+InputModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel, CheckboxGroupModel,GroupModel
+
+GroupModel is a special model which used for creating FormGroup; for example:
+```typescript
+models=[
+   new InputModel({...}),
+   ...
+   new GroupModel({
+      id:'anyid',
+      group:[// the `group` is the same as the `model`;
+         new InputModel({...}),
+         new SelectModel({...}),
+         ....
+      ],
+   }),
+   new CheckBoxModel({...}),
+   ...
+];
 ```
 
 ## License
