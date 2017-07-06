@@ -1,20 +1,29 @@
 # ngx-myform
-Easy to Use bootstrap v4 and angular 4+ for rapid form development;
-...
+Easy to Sse,Flexible,Simple,Powerful Angular 4+ module with Bootstrap v4 ui for Rapid Form Development;
+
+## Table of Contents
+
+[Installation:](#Installation):
+
+[Usage:](#Usage)
+
+[FormConfig:](#FormConfig)
+
+[ControlTypes:](#ControlTypes)
+
+[livedemo:](#livedeo)
+
+
 
 ## Installation
 
-To install this library, run:
-
 ```bash
 $ npm install ngx-myform --save
+$ yarn add ngx-myform
 ```
+## Usage
 
-## Consuming the library
-
-Once you have installed the library, you can import it in any Angular application:
-
-## How to Use
+Once you have installed the library, you need some preparations:
 1: set bootstrap v4 global style
    if your app based on angular-cli see [here](https://github.com/angular/angular-cli/wiki/stories-global-styles); how to configure global style
    for example:
@@ -25,17 +34,9 @@ Once you have installed the library, you can import it in any Angular applicatio
   ],
    ```
 2: import the module:
-
 ```typescript
-
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
-
-import { AppComponent } from './app.component';
-
 // Import your library
 import { NgxMyFormModule } from 'ngx-myform';
-
 @NgModule({
   declarations: [
     AppComponent
@@ -43,8 +44,7 @@ import { NgxMyFormModule } from 'ngx-myform';
   imports: [
     BrowserModule,
     NgxMyFormModule.forRoot(),
-    // Specify your library as an import
-    OtherLibraryModule
+    ...
   ],
   providers: [],
   bootstrap: [AppComponent]
@@ -55,126 +55,283 @@ export class AppModule { }
 
 ```typescript
 import { FormGroup } from '@angular/forms';
-import { InputModel, GroupModel, TextareaModel, SelectModel, CheckboxModel, RadiogroupModel } from 'ngx-myform';
+import { FormConfig, InputModel, GroupModel, TextareaModel, SelectModel, RadiogroupModel, CheckboxGroupModel, CheckboxModel } from 'ngx-myform';
+function customeValidator(): ValidatorFn {
+  return (g: FormGroup) => {
+    return g.get('password').value === g.get('repassword').value
+      ? null : { mismatch: true };
+  }
+}
+function customValidatorOtherFormat(g: FormGroup) {
+  return g.get('password').value === g.get('repassword').value
+    ? null : { mismatch: true };
+}
+function test_math_2(g: FormGroup) {
+  return g.get('test_sub_group_1').value === g.get('test_sub_group_2').value ? null : { notmatch: true };
+}
+function customEmailValidator(): ValidatorFn {
+  return (c: AbstractControl) => {
+    if (!c.value) { return null; }
+    const reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    return reg.test(c.value) ? null : { email_validator_key: true }
+  }
+}
+function customEmailduplicated(control: AbstractControl) {
+  const q = new Promise<{ [key: string]: boolean }>((resolve, reject) => {
+    setTimeout(() => {
+      if (control.value === 'test@gmail.com') {
+        resolve({ 'duplicated': true });
+      } else {
+        resolve(null);
+      }
+    }, 1000);
+  });
+  return q;
+}
+function customCheckboxGroupValidator_1(g: FormGroup) {
+  return g.get('checkbox_4').value
+    ? null : { shouldlike: true };
+}
+function customCheckboxGroupValidator_2(g: FormGroup) {
+  const num = Object.keys(g.controls).reduce((curr, key) => {
+    if (g.get(key).value) {
+      curr++;
+    }
+    return curr;
+  }, 0);
+  return num > 2 ? null : {
+    shouldlikeatleast: true
+  }
+}
 @Component({
 })
 export Class YorComponent implements OnInit {
   constructor(){      
   }
-  models = [
+   models = [
     new InputModel({
-        id: 'my_id',
-        value: 'default value',
-        // disabled:true,
-        validators: [
-          {
-            // the key's value must be the ValidatorError's key;
-            key: 'required',
-            validator: Validators.required,
-            message: 'here is my custom required message',
+      id: 'username',
+      label: {
+        html: 'username:',
+        class: ['label_class_1', 'label_class_2'],
+      },
+      validators: [
+        { key: 'required', validator: Validators.required, message: 'username is required' },
+        { key: 'minlength', validator: Validators.minLength(3), message: 'username must 3 chars at least' }
+      ],
+      wrappersClass: {
+        mainWrapper: ['test1', 'test_sub_1', 'test_sub_2'],
+      },
+    }),
+
+    new InputModel({
+      id: 'age',
+      label: {
+        html: 'your age:'
+      },
+      disabled: true,
+      value: "it's a secret :)"
+    }),
+    new InputModel({
+      id: 'niceperson',
+      label: {
+        html: 'a nice persion?'
+      },
+      value: 'definitly',
+      attributes: {
+        readonly: 'readonly',
+      }
+    }),
+    new InputModel({
+      id: 'avatar',
+      label: {
+        html: 'avatar:'
+      },
+      attributes: {
+        type: 'file',
+        multiple: 'multiple'
+      },
+      events: {
+        change: (e) => {
+          console.log(e.target.files);
+        }
+      }
+    }),
+    new CheckboxGroupModel({
+      id: 'intrests',
+      // inline: false,
+      label: {
+        html: 'What do you like:'
+      },
+      options: [
+        {
+          id: 'checkbox_1',
+          checkLabel: 'basketball',
+        },
+        {
+          id: 'checkbox_2',
+          checkLabel: 'football',
+        },
+        {
+          id: 'checkbox_3',
+          checkLabel: 'swimming',
+        },
+        {
+          id: 'checkbox_4',
+          checkLabel: 'reading',
+        },
+        {
+          id: 'checkbox_5',
+          checkLabel: 'music',
+        },
+      ],
+      validators: [
+        { key: 'shouldlike', validator: customCheckboxGroupValidator_1, message: 'why not like reading?' },
+        { key: 'shouldlikeatleast', validator: customCheckboxGroupValidator_2, message: 'you should like at least 3 item' }
+      ],
+    }),
+    new GroupModel({
+      id: 'passwordGroup',
+      group: [
+        new InputModel({
+          id: 'password',
+          label: {
+            html: 'password:'
           },
-          { key: 'minlength', validator: Validators.minLength(3), message: 'at lease 3 charactors' }
-        ],
-        wrapper: {
-          // wapper a dive around the input,textarea,select...model with a div ,with this you can specify some attributes for exaple class:'col-md-6 my_custom_class',
+          // disabled: true,
           attributes: {
-            class: 'input_wrapper_class_1 test_class_2'
-          }
-        },
-        label: {
-          value: '<div class="class_1">here is label value</div>',
-          // use attributes to set other attributes of the label,for exaple when using bootstrap grid can set 'class' attribute 'col-md-3' etc
-          attributes: {
-            class: 'label_class_1 label_class_2'
-          }
-        },
-        attributes: {
-          // custom the control's attributes. for example class and autofocus
-          class: 'class_1 class_2',
-          autofocus: 'autofocus',
-        },
-        // custom some events for this control,any event you want as long as this event is valid for the control
-        events: {
-          change: () => {
-            console.log('changed!');
+            type: 'password',
           },
-          keyup: () => {
-            console.log('keyup!');
+          validators: [
+            { key: 'required', validator: Validators.required, message: 'password is required' }
+          ],
+        }),
+        new InputModel({
+          id: 'repassword',
+          label: {
+            html: 're-password:'
           },
-        },
-        prefix: {
-          // prefix some html before the control,for example using bootstrap's addon
-          // and also a suffix with same config just after the control
-          value: '<div class="ceshi_addon_1 ceshi_addon_2">let me try</div>',
           attributes: {
-            class: 'test_prefix_1',
-          }
-        },
-      }),
-      new SelectModel({
-        id: 'select_1',
-        value: 'value2',
-        label: { value: 'select lable', },
-        options: [
-          { label: 'select_display_label', value: 'value1' },
-          { label: 'display_label_2', value: 'value2' }
-        ],
-      }),
-      new TextareaModel({
-        id: 'test_textarea',
-        validators: [
-          { key: 'required', validator: Validators.required, message: 'fill it for me!' }
-        ],
-      }),
-      new InputModel({
-        id: 'test2',
-      }),
-      // a group model container other model such as input select textare ... with the group property.
-      new GroupModel({
-        id: 'test3',
-        // group level validator
-        validators: [{ key: 'pattern', validator: Validators.pattern(/test/), message: 'group-level-error-message' }],
-        group: [
-          new CheckboxModel({
-            id: 'test_3_3',
-            label: {
-              value: 'layout label for checkbox',
-            },
-            checkLabel: 'this is the checklable',
-            value: 'anyvalue',
-            checked: true,
-            // disabled:true,
-          }),
-          new InputModel({
-            id: 'test3_1',
-            validators: [
-              { key: 'required', validator: Validators.required, message: 'this is required!' },
-              { key: 'minlength', validator: Validators.minLength(5), message: '5 chars at least' }
-            ],
-          }),
-          new InputModel({
-            id: 'test3_2',
-            validators: [
-              { key: 'required', validator: Validators.required, message: '这个也得写！' }
-            ],
-          }),
-        ],
-      }),
-      new RadiogroupModel({
-        id: 'test_radio_group',
-        legend: {
-          value: 'here is legend',
-          attributes: {
-            class: 'class_legend_1 class_legend_2',
+            type: 'password',
           },
-        },
-        options: [
-          { label: 'here is label1', value: 'value_1', },
-          { label: 'label2', value: '2', checked: true },
-          { label: 'label3', value: 'value3', disabled: true }
-        ],
-      }),
-    ];
+          validators: [
+            { key: 'required', validator: Validators.required, message: 'please retype your password' }
+          ],
+        }),
+      ],
+      validators: [
+        { key: 'mismatch', validator: customeValidator(), message: 'the password not match' },
+      ],
+    }),
+    new InputModel({
+      id: 'email',
+      label: {
+        html: 'email:'
+      },
+      prefix: {
+        html: '@',
+        class: ['input-group-addon'],
+      },
+      validators: [
+        { key: 'email_validator_key', validator: customEmailValidator(), message: 'invalid Email' }
+      ],
+      asyncValidators: [
+        { key: 'duplicated', validator: customEmailduplicated, message: 'Email is already existed!' }
+      ],
+      wrappersClass: {
+        controlWrapper: ['input-group']
+      },
+    }),
+    new InputModel({
+      id: 'phone',
+      label: {
+        html: 'phone number:',
+      },
+      validators: [
+        { key: 'required', validator: Validators.required, message: 'please fill the phone number' }
+      ],
+    }),
+    new InputModel({
+      id: 'verificationcode',
+      label: {
+        html: 'verification code:'
+      },
+      validators: [{ key: 'required', validator: Validators.required, message: 'this is required' }],
+      suffix: {
+        html: '<button type="button" class="btn btn-success" onclick="alert(\'send me verificaton code!\');">send code</button>',
+        class: ['border-0', 'ml-3', 'p-0'],
+      },
+      wrappersClass: {
+        controlWrapper: ['input-group']
+      },
+    }),
+    new SelectModel({
+      id: 'country',
+      label: {
+        html: 'country:'
+      },
+      value: 'england',
+      options: [
+        { label: 'select one country', value: '' },
+        { label: 'China', value: 'china' },
+        { label: 'USA', value: 'usa' },
+        { label: 'Japan', value: 'japan' },
+        { label: 'England', value: 'england' },
+        { label: 'France', value: 'france' },
+      ],
+      validators: [
+        { key: 'required', validator: Validators.required, message: 'country is required' }
+      ],
+      events: {
+        change: () => {
+          console.log('ok--changed!');
+        }
+      }
+    }),
+    new SelectModel({
+      id: 'occupation',
+      attributes: {
+        multiple: 'multiple',
+      },
+      label: {
+        html: 'accupation:',
+      },
+      validators: [{ key: 'required', validator: Validators.required, message: 'occupation is required' }],
+      options: [
+        { label: 'Programmer', value: 'programmer' },
+        { label: 'Teacher', value: 'teacher' },
+        { label: 'Dodctor', value: 'doctor' },
+        { label: 'Driver', value: 'driver' }
+      ],
+    }),
+    new RadiogroupModel({
+      id: 'gender:',
+      label: {
+        html: 'gender:',
+      },
+      legend: {
+        value: 'Radio Group Legend!',
+      },
+      inline: true,
+      options: [
+        { label: 'Male', value: 'male' },
+        { label: 'Female', value: 'female' },
+        { label: 'xxx', value: 'xxx', disabled: true }
+      ],
+      validators: [
+        { key: 'required', validator: Validators.required, message: 'the gender is required' }
+      ],
+    }),
+    new CheckboxModel({
+      id: 'agree',
+      value: true,
+      required: true,
+      checkLabel: 'agree some terms?',
+      validators: [
+        { key: 'required', validator: Validators.required, message: 'you must agree these terms' }
+      ],
+    }),
+  ];
 
   ngOnInit(){
   }
@@ -184,11 +341,11 @@ export Class YorComponent implements OnInit {
 ...
 }
 ```
-3: in the template `YourComponent.html`;
+4: in the template `YourComponent.html`;
 ```html
-  <ngx-bootstrap-form [models]="models" (ngSubmit)="YourSubmitFunction($event);">
-    <button class="btn btn-primary">submit</button>
-  </ngx-bootstrap-form>
+<ngx-bootstrap-form [formConfig]="formConfig" (ngSubmit)="test_submit($event);" #myform (ngValueChange)='test_change($event);'>
+  <button class="btn btn-primary" type="submit">submit</button>
+</ngx-bootstrap-form>
 ```
 
 ## License
