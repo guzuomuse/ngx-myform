@@ -3,13 +3,13 @@ Easy to Sse,Flexible,Simple,Powerful Angular 4+ module with Bootstrap v4 ui for 
 
 ## Table of Contents
 
-[Installation:](#Installation):
+[Installation:](#installation):
 
-[Usage:](#Usage)
+[Usage:](#usage)
 
-[FormConfig:](#FormConfig)
+[FormConfig:](#formconfig)
 
-[ControlTypes:](#ControlTypes)
+[ControlTypes:](#controltypes)
 
 [livedemo:](#livedeo)
 
