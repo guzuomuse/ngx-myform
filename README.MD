@@ -441,6 +441,19 @@ models=[
         validator: AsyncValidatorFn | ValidationErrors,
         message?: string,
     }[];
+    wrappersClass?: WrappersClassInterFace;
+    label?: {
+        html?: string,
+        class?: Array<string>,
+    };
+    prefix?: {
+        html?: string,
+        class?: Array<string>,
+    };
+    suffix?: {
+        html?: string,
+        class?: Array<string>,
+    };    
    }
    ```
 ## License
