@@ -1,0 +1,4 @@
+<form [formGroup]='form' (ngSubmit)="submit(form);" [modelAttributes]='formConfig.attributes'>
+    <ngx-bootstrap-control *ngFor="let model of formConfig.models" [model]="model" [fg]="form" [globalWrappersClass]='formConfig.wrappersClass'></ngx-bootstrap-control>
+    <ng-content></ng-content>
+</form>

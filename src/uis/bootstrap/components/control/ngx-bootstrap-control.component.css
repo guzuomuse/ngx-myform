@@ -1,0 +1,23 @@
+.form-group {
+  flex-wrap: nowrap;
+}
+
+/*.input-group {
+  width: auto;
+  flex-wrap: wrap;
+}
+
+.wrapper-class {
+  flex: 1 0 auto;
+}
+
+.input-group > .form-control-feedback {
+  width: 100%;
+}
+
+.input-group .form-control:not(:first-child):not(:last-child) {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0.25rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0.25rem;
+}*/

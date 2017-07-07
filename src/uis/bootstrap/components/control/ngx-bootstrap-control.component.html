@@ -1,0 +1,77 @@
+<ng-container *ngIf="model" [formGroup]='fg'>
+    <div [class.has-danger]="model.errorMessage && model.type!=='group'" [ngClass]="mergedWrappersClass.mainWrapper" class="form-group">
+        <label *ngIf="model.type!='group'" for="{{model.options.id}}" [innerHTML]='model.options.label?.html | sanitizeHtml' [ngClass]='mergedWrappersClass.labelWrapper'></label>
+        <div [ngClass]="mergedWrappersClass.secondaryWrapper">
+            <div [ngClass]="mergedWrappersClass.controlWrapper">
+                <div *ngIf="model.options.prefix" [innerHTML]="model.options.prefix?.html | sanitizeHtml" [ngClass]='model.options.prefix?.class'></div>
+                <ng-container [ngSwitch]="model.type">
+                    <ng-container *ngSwitchCase="'input'">
+                        <input id="{{model.options.id}}" [formControlName]='model.options.id' [modelEvents]="model.options.events" [modelAttributes]="model.options.attributes"
+                            [ngClass]="['form-control']">
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'textarea'">
+                        <textarea id="{{model.options.id}}" [formControlName]='model.options.id' [modelEvents]="model.options.events" [modelAttributes]="model.options.attributes"
+                            [ngClass]="['form-control']"></textarea>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'select'">
+                        <select *ngIf='model.multiple' [multiple]='model.multiple' id="{{model.options.id}}" [formControlName]='model.options.id'
+                            [modelEvents]="model.options.events" [modelAttributes]="model.options.attributes" [ngClass]="['form-control']">
+                        <option *ngFor="let option of model.options.options" [value]='option.value' >
+                            {{option.label}}
+                        </option>
+                    </select>
+                        <select *ngIf='!model.multiple' id="{{model.options.id}}" [formControlName]='model.options.id' [modelEvents]="model.options.events"
+                            [modelAttributes]="model.options.attributes" [ngClass]="['form-control']">
+                        <option *ngFor="let option of model.options.options" [value]='option.value' >
+                            {{option.label}}
+                        </option>
+                    </select>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'checkbox'">
+                        <label class="form-check-label">
+                        <input type='checkbox'  [required]='model.options.required' class="form-check-input" id="{{model.options.id}}" [formControlName]='model.options.id' [modelEvents]="model.options.events" [modelAttributes]="model.options.attributes"  [value]="model.options.value">
+                        {{model.options.checkLabel}}
+                    </label>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'radiogroup'">
+                        <fieldset>
+                            <legend [modelAttributes]='model.options.legend?.attributes'>
+                                {{model.options.legend?.value}}
+                            </legend>
+                            <div *ngFor="let option of model.options.options" class='form-check' [class.disabled]='option.disabled' [class.form-check-inline]='model.options.inline'>
+                                <label class="form-check-label">
+                                    <input type="radio" [formControlName]='model.options.id' class="form-check-input" [value]="option.value" [checked]="option.checked" [attr.disabled]='option.disabled' [modelEvents]="model.options.events" [modelAttributes]="option.attributes">
+                                    {{option.label}} 
+                                </label>
+                            </div>
+                        </fieldset>
+                    </ng-container>
+                    <ng-container *ngSwitchCase="'checkboxgroup'" [formGroupName]='model.options.id'>
+                        <div *ngFor="let option of model.options.options" class='form-check' [class.disabled]='option.disabled' [class.form-check-inline]="model.options.inline!==false?true:model.options.inline">
+                            <label class="form-check-label">
+                                <input type='checkbox' class="form-check-input" id="{{option.id}}" [formControlName]='option.id'>
+                                {{option.checkLabel}}
+                            </label>
+                        </div>
+                    </ng-container>
+
+                    <!--<div *ngSwitchDefault>output2</div>-->
+                </ng-container>
+                <div *ngIf="model.options.suffix" [innerHTML]="model.options.suffix?.html | sanitizeHtml" [ngClass]='model.options.suffix?.class'></div>
+            </div>
+            <div *ngIf="model.errorMessage&& model.type!=='group'" class='form-control-feedback'>{{model.errorMessage}}
+            </div>
+        </div>
+    </div>
+    <ng-container *ngIf="model.type=='group'" [formGroupName]='model.options.id'>
+        <ngx-bootstrap-control *ngFor="let group_model of model.options.group" [model]='group_model' [fg]='fg.get(model.options.id)'
+            [globalWrappersClass]='globalWrappersClass'>
+        </ngx-bootstrap-control>
+        <div *ngIf="model.errorMessage && model.type==='group'" class="form-group" [ngClass]="mergedWrappersClass.mainWrapper">
+            <label [ngClass]='mergedWrappersClass.labelWrapper'></label>
+            <div class='has-danger' [ngClass]='mergedWrappersClass.secondaryWrapper'>
+                <div class="form-control-feedback">{{model.errorMessage}}</div>
+            </div>
+        </div>
+    </ng-container>
+</ng-container>
