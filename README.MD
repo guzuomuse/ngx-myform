@@ -18,7 +18,7 @@ Easy to Sse,Flexible,Simple,Powerful Angular 4+ module with Bootstrap v4 ui for 
 
 [ModelConfig](#modelconfig)
 
-[livedemo](#livedeo)
+[demo repository](https://github.com/guzuomuse/ngx-myform-demo)
 
 
 
