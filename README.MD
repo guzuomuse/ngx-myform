@@ -391,7 +391,7 @@ before talking about The "wrappersClass";let's see the  DOM structuor for a mode
   </div>
 </div>
 ```
-if you are familar with bootstrap v4 understand;it's based on the bootstrap form structor;
+if you are familar with bootstrap v4 it should be easy to understand;it's based on the bootstrap form structor;
 so,the purpose of `WrappersClass` is just **Globally** configure  for form layout while every model also  has this individually;
 
 you can custom any class with:
