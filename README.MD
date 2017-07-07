@@ -1,5 +1,5 @@
 # ngx-myform
-Easy to Sse,Flexible,Simple,Powerful Angular 4+ module with Bootstrap v4 ui for Rapid Form Development;
+Easy to use,Flexible,Simple,Powerful Angular 4+ module with Bootstrap v4 ui for Rapid Form Development;
 # Demo screenShot:
 ### pic1:Normal
 ![pic1](https://lh3.googleusercontent.com/so_mv_BInMgU7BKhkzOVMdaYg8Hr0n4H9y0pZ1FSo2T7NJIGHZmm0d9_QJqWIeNV8NCq_dhp8HmMeU7GGDC7szqrwBJYj0SuCmyCxnbFAMSNO-WPq4kR-KqJ1STBA6pdovdiL-EwlpUSsXaFleuu3IxcqMJT3FimlBmj7cLx8r5zwgmjE4i9CzyGOUQaLHRM91HRUo0720_aoF3rhC-MCfh75M2d9sZg8Tki-H3X7Mx2Yz_K1Cy8le1dCGkcs5lceUMB5ly8q0J7wTAb-kIMt-64MtiLbKBq8WhJW-X8MPTKcRjOm2c9z9AZXO7hSmMHHBciq9WlqO9ejDUJWNKRmf50nCW2TcGbIOsMyyIJ04lmkYsVCYN6vQQ0nw2LYV9zIii5PPhFjahsMy8UiXkFmeaYoTXcl-Oh1P9H0Ar5KCjoCCVlMr2KbNNSyeu0xri0M_CcrQ_nIvMaK5b40aIFkG_wTFT-YKETzCMPE59Xo7VSI4xxArxu940F3Y3qUAM6dA-N9UpI33K4ttpfSVgZ4jjFvAsSHQ8M1UcQa7EJmzT535555uecUlJ6-VNBpePV95YT2SaSNDv0YaPcjZrrC3oJfj-yzCK5V63e6EHbpfYx_y5BbRg=w636-h741-no)
