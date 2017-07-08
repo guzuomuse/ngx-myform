@@ -1,6 +1,6 @@
 <ng-container *ngIf="model" [formGroup]='fg'>
     <div [class.has-danger]="model.errorMessage && model.type!=='group'" [ngClass]="mergedWrappersClass.mainWrapper" class="form-group">
-        <label *ngIf="model.type!='group'" for="{{model.options.id}}" [innerHTML]='model.options.label?.html | sanitizeHtml' [ngClass]='mergedWrappersClass.labelWrapper'></label>
+        <label *ngIf="model.type!='group'" for="{{model.options.id}}" [innerHTML]='model.options.label | sanitizeHtml' [ngClass]='mergedWrappersClass.labelWrapper'></label>
         <div [ngClass]="mergedWrappersClass.secondaryWrapper">
             <div [ngClass]="mergedWrappersClass.controlWrapper">
                 <div *ngIf="model.options.prefix" [innerHTML]="model.options.prefix?.html | sanitizeHtml" [ngClass]='model.options.prefix?.class'></div>

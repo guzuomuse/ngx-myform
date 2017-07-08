@@ -1,14 +1,14 @@
 # ngx-myform
-Easy to use,Flexible,Simple,Powerful Angular 4+ module with Bootstrap v4 ui for Rapid Form Development;
+Easy to Sse,Flexible,Simple,Powerful Angular 4+ module with Bootstrap v4 ui for Rapid Form Development;
 # Demo screenShot:
 ### pic1:Normal
-![pic1](https://lh3.googleusercontent.com/m4fZd7U4NhNMPj65LNOLc0edVcoOzv9EmMLwKFSL4DbDfV9yWzyDhNo3yjWqCWpknneJO4-Rtwuu5uh5uEwVWzT2pxVqaJUWahJljBp-X1EWizlll92TkByMbq0TbnhtvAm6KibYa65mbJrvuvHGin_jbZGHmo74I4iSdpbmF04U9M3JNn-Mr_uRuO4oTkWYp7UbCMcQS1vIuzIALil4m4iSK0SYF_wmPeR8pgDxPcybaSdkAuMCCi4xJCKNaOoJYQfNwrX98fuzJUFCaNqAt9Ns2zpLJ80mKyN2HT3hJxNYSbKVIM6sYybpCoHmzRVIMmpIY3eljMSpMIDxTHTuAiyY29JjN8gTEQJ-dW3I5StP8kS7zAs1PG5_D7vABHjWEpSn7P_1HUnT44SZxHa1GF7bQEoEkWFDgHNR611vrb29drA28wVY87jLr8bb4rQwQEyT-FCWZ7KAlKKf6vI3sEU8nP2a7t02AJQfdV9az-jLW7ycJqt2mS-K11SBFVTNd4afXCwfEQHFR-xMFrro-CU4714D99dDceybtYcyOvTdNBQYIR1wcN5bMb8fDJ1v5nvEUxX9ZK4yuZ42_TuPvM_utO-V66UXSVuFTLId8BVo3aMdiZ--qALXNi4fdBDQsQNDEhhF45d2yiVBvjSVkNu6MACTum9KBGPK7DFcQxPG=w636-h741-no)
+![pic1](https://lh3.googleusercontent.com/so_mv_BInMgU7BKhkzOVMdaYg8Hr0n4H9y0pZ1FSo2T7NJIGHZmm0d9_QJqWIeNV8NCq_dhp8HmMeU7GGDC7szqrwBJYj0SuCmyCxnbFAMSNO-WPq4kR-KqJ1STBA6pdovdiL-EwlpUSsXaFleuu3IxcqMJT3FimlBmj7cLx8r5zwgmjE4i9CzyGOUQaLHRM91HRUo0720_aoF3rhC-MCfh75M2d9sZg8Tki-H3X7Mx2Yz_K1Cy8le1dCGkcs5lceUMB5ly8q0J7wTAb-kIMt-64MtiLbKBq8WhJW-X8MPTKcRjOm2c9z9AZXO7hSmMHHBciq9WlqO9ejDUJWNKRmf50nCW2TcGbIOsMyyIJ04lmkYsVCYN6vQQ0nw2LYV9zIii5PPhFjahsMy8UiXkFmeaYoTXcl-Oh1P9H0Ar5KCjoCCVlMr2KbNNSyeu0xri0M_CcrQ_nIvMaK5b40aIFkG_wTFT-YKETzCMPE59Xo7VSI4xxArxu940F3Y3qUAM6dA-N9UpI33K4ttpfSVgZ4jjFvAsSHQ8M1UcQa7EJmzT535555uecUlJ6-VNBpePV95YT2SaSNDv0YaPcjZrrC3oJfj-yzCK5V63e6EHbpfYx_y5BbRg=w636-h741-no)
 ### pic2:Use Bootstrap 4 Grid
-![pic2](https://lh3.googleusercontent.com/EjMbZ_jRuvz1XF4OsqC_on45U35Q-lZwmTr69o06S6O2yqzVJnOXbP5ppS6arktcpqbCvBMD8IiVLuDJQ57vyXR1cmU2TW6l2FhO3XWWnjzTceUDVxraWkT1Oq5_S9cG4H3hcwF-6zlzDGCuTKSCLHhYcihR65utQXAvRNZBdXcwEicIBUkJyl0whFBGkOZBUr03vajyczOvVa-gV1Vu1MnJN23en1ZsWSRMq0fa8n50gubZAsLkepU8tUXpn7B0Ni7AVT0Vehht7qanfyvcdUKcoT_kQ7RUUZi6cbQREN2OGBLW385_M58Iu9B6oogcYCK24bd8UU86IBBxB9ADdVFXWggk9EsaxArajbKI_K5Uw9SBqcBowUc9Xbk05SIh8QNGZPsHbuuETuwrP4lvO9UlZltJOuyN3ZuHm1uKIYTZtN0fraOJ0hQQtxxNxmAEg7XgL9xZETPSRCKL4s_03R-uRlFr88FF_Qh6tkd66aRq6VoNHWljdmKqStcxXz0VRGgAiqu4WxOrXL70tIXtiZfYV04gBYbilgOeWnhIZTIwxXI7r0gEiE7EPtRRNMT-HRbJlIfzmZt6FIqgviy0jATnmfP9S_6uI9H2HaE3lSRyO0Y7pV_aiZ3vnYFslBFKsd27N_dtmnV1y8CdR975B8vnpu84ENnNsrLPoyfJTw1g=w726-h742-no)
+![pic2](https://lh3.googleusercontent.com/O_gzb66MBoAoy2RfyKqeIJbOl3zhW5P4OUU0M4ICj9Kt_1ygTzTcvZZiTzx6oPpQKJYzmtR8ntIXE3vtoz6jhpMUFAKrneCLt38XXrh8Jmo5-7DMpjUoMSfXsoLSbbb15kiqR6jQ4zH4RDFxXZYWB28vQi-XMlp3JXiKzqiPbLKA0bteZ7Y-FsLoyJDII8ARg3ilAUsn6EIijq4S3iX-iFCxhblAboMZg789JDeo7HCQy5i7uixeFdNVDQO9I1_r5owBXV6nAUSWbKHY0vVUAEtHYkT2Y8hcuEoYKTvfYfvyihR8YkoWNT5LBoj8NrPljoJku3hcitNoWfS97qR_xPlhZFG--tOLAt_53CwF67RmtzRcuNYaMUBNcPcOgs2migW0Zq6KN_FnttUd3wdF5Pr5f-qm4zTASuAOuNrBXkpIJTAJzdW6FjgZCelB23KG7YxW_E2QhEyywzYE3BPPyx7GSCrvKOtuyWRf5VOknm5nxfNcUwAhkDlQJz-KKAVn2dcQmStqOOAUOiZPa5HvqkycL_mrX2doeCtEbgqyl3yevfGpvP_asijKr2sjB-0Ue0_S0ZWrjd_dIGQc6KJAmRankmICuuHl-z9rU1WdmAP_EcXWd48CUDA=w736-h742-no)
 
 ## Table of Contents
 
-[Installation](#installation)
+[Installation](#installation):
 
 [Usage](#usage)
 
@@ -31,7 +31,6 @@ $ yarn add ngx-myform
 ## Usage
 
 Once you have installed the library, you need some preparations:
-
 1: set bootstrap v4 global style
    if your app based on angular-cli see [here](https://github.com/angular/angular-cli/wiki/stories-global-styles); how to configure global style
    for example:
@@ -62,9 +61,8 @@ export class AppModule { }
 3:in you component `YourComponent.ts`
 
 ```typescript
-import { Component, OnInit } from '@angular/core';
-import { FormConfig, InputModel, GroupModel, TextareaModel, SelectModel, RadiogroupModel, CheckboxGroupModel, CheckboxModel, } from 'ngx-myform';
-import { FormGroup, Validators, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import { FormConfig, InputModel, GroupModel, TextareaModel, SelectModel, RadiogroupModel, CheckboxGroupModel, CheckboxModel } from 'ngx-myform';
 function customeValidator(): ValidatorFn {
   return (g: FormGroup) => {
     return g.get('password').value === g.get('repassword').value
@@ -74,6 +72,9 @@ function customeValidator(): ValidatorFn {
 function customValidatorOtherFormat(g: FormGroup) {
   return g.get('password').value === g.get('repassword').value
     ? null : { mismatch: true };
+}
+function test_math_2(g: FormGroup) {
+  return g.get('test_sub_group_1').value === g.get('test_sub_group_2').value ? null : { notmatch: true };
 }
 function customEmailValidator(): ValidatorFn {
   return (c: AbstractControl) => {
@@ -110,33 +111,39 @@ function customCheckboxGroupValidator_2(g: FormGroup) {
   }
 }
 @Component({
-  selector: 'app-demo1',
-  templateUrl: './demo1.component.html',
-  styleUrls: ['./demo1.component.css'],
 })
-export class Demo1Component implements OnInit {
-  models = [
+export Class YorComponent implements OnInit {
+  constructor(){      
+  }
+   models = [
     new InputModel({
       id: 'username',
-      label: 'username:(use custom class `label_class_1`)',
+      label: {
+        html: 'username:',
+        class: ['label_class_1', 'label_class_2'],
+      },
       validators: [
         { key: 'required', validator: Validators.required, message: 'username is required' },
         { key: 'minlength', validator: Validators.minLength(3), message: 'username must 3 chars at least' }
       ],
       wrappersClass: {
-        labelWrapper: ['label_class_1'],
+        mainWrapper: ['test1', 'test_sub_1', 'test_sub_2'],
       },
     }),
 
     new InputModel({
       id: 'age',
-      label: 'your age:',
+      label: {
+        html: 'your age:'
+      },
       disabled: true,
       value: "it's a secret :)"
     }),
     new InputModel({
       id: 'niceperson',
-      label: '<div style="color:blue;">a nice person?(html label support)</div>',
+      label: {
+        html: 'a nice persion?'
+      },
       value: 'definitly',
       attributes: {
         readonly: 'readonly',
@@ -144,7 +151,9 @@ export class Demo1Component implements OnInit {
     }),
     new InputModel({
       id: 'avatar',
-      label: 'avatar:',
+      label: {
+        html: 'avatar:'
+      },
       attributes: {
         type: 'file',
         multiple: 'multiple'
@@ -158,8 +167,9 @@ export class Demo1Component implements OnInit {
     new CheckboxGroupModel({
       id: 'intrests',
       // inline: false,
-      label: 'what do you like:',
-
+      label: {
+        html: 'What do you like:'
+      },
       options: [
         {
           id: 'checkbox_1',
@@ -192,7 +202,9 @@ export class Demo1Component implements OnInit {
       group: [
         new InputModel({
           id: 'password',
-          label: 'password:',
+          label: {
+            html: 'password:'
+          },
           // disabled: true,
           attributes: {
             type: 'password',
@@ -203,8 +215,9 @@ export class Demo1Component implements OnInit {
         }),
         new InputModel({
           id: 'repassword',
-          label: 're-password:',
-
+          label: {
+            html: 're-password:'
+          },
           attributes: {
             type: 'password',
           },
@@ -219,8 +232,9 @@ export class Demo1Component implements OnInit {
     }),
     new InputModel({
       id: 'email',
-      label: 'email:',
-
+      label: {
+        html: 'email:'
+      },
       prefix: {
         html: '@',
         class: ['input-group-addon'],
@@ -237,16 +251,18 @@ export class Demo1Component implements OnInit {
     }),
     new InputModel({
       id: 'phone',
-      label: 'phone number:',
-
+      label: {
+        html: 'phone number:',
+      },
       validators: [
         { key: 'required', validator: Validators.required, message: 'please fill the phone number' }
       ],
     }),
     new InputModel({
       id: 'verificationcode',
-      label: 'verifacation code:',
-
+      label: {
+        html: 'verification code:'
+      },
       validators: [{ key: 'required', validator: Validators.required, message: 'this is required' }],
       suffix: {
         html: '<button type="button" class="btn btn-success" onclick="alert(\'send me verificaton code!\');">send code</button>',
@@ -258,8 +274,9 @@ export class Demo1Component implements OnInit {
     }),
     new SelectModel({
       id: 'country',
-      label: 'country:',
-
+      label: {
+        html: 'country:'
+      },
       value: 'england',
       options: [
         { label: 'select one country', value: '' },
@@ -283,7 +300,9 @@ export class Demo1Component implements OnInit {
       attributes: {
         multiple: 'multiple',
       },
-      label: 'occupation:',
+      label: {
+        html: 'accupation:',
+      },
       validators: [{ key: 'required', validator: Validators.required, message: 'occupation is required' }],
       options: [
         { label: 'Programmer', value: 'programmer' },
@@ -294,7 +313,9 @@ export class Demo1Component implements OnInit {
     }),
     new RadiogroupModel({
       id: 'gender:',
-      label: 'gender:',
+      label: {
+        html: 'gender:',
+      },
       legend: {
         value: 'Radio Group Legend!',
       },
@@ -318,25 +339,17 @@ export class Demo1Component implements OnInit {
       ],
     }),
   ];
-  formConfig: FormConfig = {
-    models: this.models,
-    attributes: {
-      autocomplete: 'off',
-    },
-    showErrorsOnSubmit: true,
-  };
-  constructor() { }
-  ngOnInit() {
-  }
 
+  ngOnInit(){
+  }
   test_submit(form) {
     console.log('test_submit', form.value);
   }
   test_change(data) {
     console.log('test_change', data);
   }
+...
 }
-
 ```
 4: in the template `YourComponent.html`;
 ```html

@@ -7,10 +7,7 @@ export interface WrappersClassInterFace {
 }
 export interface BaseInterface extends BaseInterface {
     wrappersClass?: WrappersClassInterFace;
-    label?: {
-        html?: string,
-        class?: Array<string>,
-    };
+    label?: string;
     prefix?: {
         html?: string,
         class?: Array<string>,
