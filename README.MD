@@ -31,6 +31,7 @@ $ yarn add ngx-myform
 ## Usage
 
 Once you have installed the library, you need some preparations:
+
 1: set bootstrap v4 global style
    if your app based on angular-cli see [here](https://github.com/angular/angular-cli/wiki/stories-global-styles); how to configure global style
    for example:
